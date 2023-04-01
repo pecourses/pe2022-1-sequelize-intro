@@ -1,0 +1,22 @@
+{
+  "name": "sequelize-intro",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node .",
+    "start-dev": "nodemon ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pecourses/pe2022-1-sequelize-intro.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pecourses/pe2022-1-sequelize-intro/issues"
+  },
+  "homepage": "https://github.com/pecourses/pe2022-1-sequelize-intro#readme"
+}
