@@ -18,5 +18,14 @@
   "bugs": {
     "url": "https://github.com/pecourses/pe2022-1-sequelize-intro/issues"
   },
-  "homepage": "https://github.com/pecourses/pe2022-1-sequelize-intro#readme"
+  "homepage": "https://github.com/pecourses/pe2022-1-sequelize-intro#readme",
+  "dependencies": {
+    "pg": "^8.10.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.30.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22",
+    "sequelize-cli": "^6.6.0"
+  }
 }
