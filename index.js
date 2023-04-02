@@ -141,14 +141,76 @@ const {
 
   // console.log('foundStudents :>> ', foundStudents);
 
-  const foundStudents = await Student.findAll({
-    raw: true,
-    attributes: {
-      include: [
-        [sequelize.literal('EXTRACT (YEAR FROM age(birthday))'), 'stud_age'],
-      ],
-    },
-  });
+  // const foundStudents = await Student.findAll({
+  //   raw: true,
+  //   attributes: {
+  //     include: [
+  //       [sequelize.literal('EXTRACT (YEAR FROM age(birthday))'), 'stud_age'],
+  //     ],
+  //   },
+  // });
 
-  console.log('foundStudents :>> ', foundStudents);
+  // console.log('foundStudents :>> ', foundStudents);
+
+  // Group
+
+  // const foundStudents = await Student.findAll({
+  //   raw: true,
+  //   attributes: [
+  //     'isMale',
+  //     [sequelize.fn('count', sequelize.col('id')), 'stud_count'],
+  //   ],
+  //   group: 'isMale',
+  // });
+
+  // console.log('foundStudents :>> ', foundStudents);
+
+  // Порахувати суму активностей студентів ж та ч статі
+  // const foundStudents = await Student.findAll({
+  //   raw: true,
+  //   attributes: [
+  //     'isMale',
+  //     [
+  //       sequelize.fn('sum', sequelize.col('activitiesCount')),
+  //       'stud_activitiesCount',
+  //     ],
+  //   ],
+  //   group: 'isMale',
+  // });
+
+  // console.log('foundStudets :>> ', foundStudents);
+
+  // Having
+  // const foundStudents = await Student.findAll({
+  //   raw: true,
+  //   attributes: [
+  //     'isMale',
+  //     [
+  //       sequelize.fn('sum', sequelize.col('activitiesCount')),
+  //       'stud_activitiesCount',
+  //     ],
+  //   ],
+  //   group: 'isMale',
+  //   having: sequelize.literal('sum("activitiesCount") > 7'),
+  // });
+
+  // console.log('foundStudets :>> ', foundStudents);
+
+  // U - UPDATE - update
+
+  // const body = { email: 'newTest@gmail.com' };
+  // [updatedStudentsCount, updatedStudentsArray]
+  // [updatedStudentsCount, [updatedStudent]]
+  // const result = await Student.update(body, {
+  //   raw: true,
+  //   where: { id: 2 },
+  //   returning: true,
+  // });
+
+  // console.log('result :>> ', result);
+
+  // D - DELETE - destroy
+  const deletedStudentCount = await Student.destroy({ where: { id: 3 } });
+
+  console.log('deletedStudentCount :>> ', deletedStudentCount);
 })();
