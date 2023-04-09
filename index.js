@@ -2,6 +2,8 @@ const {
   sequelize,
   Student,
   Group,
+  Subject,
+  StudentSubjects,
   Sequelize: { Op },
 } = require('./models');
 
@@ -42,12 +44,28 @@ const {
     groupId: 2,
   };
 
-  // const groupInst1 = await Group.create(group1);
-  // const groupInst2 = await Group.create(group2);
+  const subject1 = { title: 'Data Bases', hours: 100 };
+  const subject2 = { title: 'Web-programming', hours: 150 };
 
-  // const studentInst1 = await Student.create(student1);
-  // const studentInst2 = await Student.create(student2);
-  // const studentInst3 = await Student.create(student3);
+  const studSubj1 = { studentId: 1, subjectId: 1, mark: 100 };
+  const studSubj2 = { studentId: 1, subjectId: 2, mark: 90 };
+  const studSubj3 = { studentId: 2, subjectId: 1, mark: 85 };
+  const studSubj4 = { studentId: 2, subjectId: 2, mark: 88 };
+
+  await Group.create(group1);
+  await Group.create(group2);
+
+  await Student.create(student1);
+  await Student.create(student2);
+  await Student.create(student3);
+
+  await Subject.create(subject1);
+  await Subject.create(subject2);
+
+  await StudentSubjects.create(studSubj1);
+  await StudentSubjects.create(studSubj2);
+  await StudentSubjects.create(studSubj3);
+  await StudentSubjects.create(studSubj4);
 
   // Eager loading (JOIN)
   // const studWithGroup = await Student.findAll({ raw: true, include: Group });
@@ -70,9 +88,11 @@ const {
   // console.log('groupOfStud :>> ', groupOfStud.get());
 
   // Group.hasMany(Student) => group.getStudents(),...
-  const groupInst1 = await Group.findByPk(1);
-  const studsOfGroup = await groupInst1.getStudents({ raw: true });
-  console.log('studsOfGroup :>> ', studsOfGroup);
+  // const groupInst1 = await Group.findByPk(1);
+  // const studsOfGroup = await groupInst1.getStudents({ raw: true });
+  // console.log('studsOfGroup :>> ', studsOfGroup);
 })();
 
 // students n : 1 groups
+// students m : n subjects
+//           mark
