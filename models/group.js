@@ -9,7 +9,14 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate (models) {
-      Group.hasMany(models.Student);
+      Group.hasMany(models.Student, {
+        foreignKey: {
+          name: 'groupId',
+          allowNull: false,
+        },
+        onDelete: 'RESTRICT',
+        onUpdate: 'CASCADE',
+      });
     }
   }
   Group.init(
