@@ -42,14 +42,37 @@ const {
     groupId: 2,
   };
 
-  const groupInst1 = await Group.create(group1);
-  const groupInst2 = await Group.create(group2);
+  // const groupInst1 = await Group.create(group1);
+  // const groupInst2 = await Group.create(group2);
 
-  const studentInst1 = await Student.create(student1);
-  const studentInst2 = await Student.create(student2);
-  const studentInst3 = await Student.create(student3);
+  // const studentInst1 = await Student.create(student1);
+  // const studentInst2 = await Student.create(student2);
+  // const studentInst3 = await Student.create(student3);
 
   // Eager loading (JOIN)
+  // const studWithGroup = await Student.findAll({ raw: true, include: Group });
+  // console.log('studWithGroup :>> ', studWithGroup);
+
+  // Отримати список груп з студентами
+  // const groupWithStud = await Group.findAll({
+  //   raw: true,
+  //   include: Student,
+  // });
+  // console.log('groupWithStud :>> ', groupWithStud);
+
+  // Lazy loading
+
+  // Student.belongsTo(Group) => student.getGroup(),...
+  // const studInst1 = await Student.findByPk(1);
+  // console.log('studInst1 :>> ', studInst1);
+
+  // const groupOfStud = await studInst1.getGroup();
+  // console.log('groupOfStud :>> ', groupOfStud.get());
+
+  // Group.hasMany(Student) => group.getStudents(),...
+  const groupInst1 = await Group.findByPk(1);
+  const studsOfGroup = await groupInst1.getStudents({ raw: true });
+  console.log('studsOfGroup :>> ', studsOfGroup);
 })();
 
 // students n : 1 groups
