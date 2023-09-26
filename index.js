@@ -52,20 +52,20 @@ const {
   const studSubj3 = { studentId: 2, subjectId: 1, mark: 85 };
   const studSubj4 = { studentId: 2, subjectId: 2, mark: 88 };
 
-  await Group.create(group1);
-  await Group.create(group2);
+  // await Group.create(group1);
+  // await Group.create(group2);
 
-  await Student.create(student1);
-  await Student.create(student2);
-  await Student.create(student3);
+  // await Student.create(student1);
+  // await Student.create(student2);
+  // await Student.create(student3);
 
-  await Subject.create(subject1);
-  await Subject.create(subject2);
+  // await Subject.create(subject1);
+  // await Subject.create(subject2);
 
-  await StudentSubjects.create(studSubj1);
-  await StudentSubjects.create(studSubj2);
-  await StudentSubjects.create(studSubj3);
-  await StudentSubjects.create(studSubj4);
+  // await StudentSubjects.create(studSubj1);
+  // await StudentSubjects.create(studSubj2);
+  // await StudentSubjects.create(studSubj3);
+  // await StudentSubjects.create(studSubj4);
 
   // Eager loading (JOIN)
   // const studWithGroup = await Student.findAll({ raw: true, include: Group });
@@ -91,6 +91,11 @@ const {
   // const groupInst1 = await Group.findByPk(1);
   // const studsOfGroup = await groupInst1.getStudents({ raw: true });
   // console.log('studsOfGroup :>> ', studsOfGroup);
+
+  // Student.belongsToMany(Subject) => student.getSubjects();
+  const studInst1 = await Student.findByPk(1);
+  const subjectsOfStud = await studInst1.getSubjects({ raw: true });
+  console.log('subjectsOfStud :>> ', subjectsOfStud);
 })();
 
 // students n : 1 groups
